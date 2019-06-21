@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "description": "An online modifiable recipe repository and automated shopping list.",
   "main": "app.js",
-  "dependencies": {
-    "eslint": "^5.16.0"
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.13.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
