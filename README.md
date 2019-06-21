@@ -1,21 +1,12 @@
-# Meal Folio
-A recipe repository and shopping list app for consolidating recipes from all over the web.
+# Mealfolio (Temporary Name)
+_An online modifiable recipe repository and automated shopping list._
 
-## Key Features
-* __Recipe Binder__
-  * Create and modify recipes
-  * Copy and paste recipes from other websites into a standard format
-  * Share recipes with other users individually, by tag, or the entire collection
-  * Categorize recipes by using tags
-* __Categorized Shopping List__
-  * Create a dinner schedule for the week
-  * Share the list with other users
-  * Automatically pull ingredients in from recipes
-  * Measuring quantities math
-* __Mobile Firendly__
-  * Offline mode
-  * Drag and drop
-  
-## Roadmap
-### v0.1
-* Create a recipe
+### The Modern Recipe Problem
+Once upon a time, recipes were kept in little cardboard boxes full of index cards and scraps of paper sorted with dividers. Managing your recipes was simple and centralized. Somewhere along the way that simblicity was lost. Now, we keep our recipes in books, scraps, magazine cutouts, Pinterest, bookmarks, and by calling our moms everytime we need to make pie dough. 
+
+Our app aims to solve this problem by keeping all recipes in a standardized format that can be imported from anywhere. Once in the repository, you own the recipe and can tweak and modify it as you wish. With a standardized format, it become easy to search and filter your recipes and automatically generate shopping lists.
+
+### Core Features
+1. Easy to import standardized recipe format.
+2. Convientent categorization and searching of recipes.
+3. Automated shopping list formed around selected recipes.
