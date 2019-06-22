@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "description": "An online modifiable recipe repository and automated shopping list.",
   "main": "app.js",
-  "dependencies": {},
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1"
+  },
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-google": "^0.13.0"
