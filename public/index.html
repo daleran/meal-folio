@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <meta name="author" content="Sean Davis">
+  <meta name="language" content="english">
+  <meta name="og:title" content="Mealfolio">
+  <title>Mealfolio</title>
+
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <h1>Mealfolio - Basic</h1>
+    <p>Serving recipes like its 1999.</p>
+
+    <form action="/recipes" method="post">
+        <div>
+            <label for="recipeName">Recipe:</label>
+            <input type="text" id="recipeName" name="recipe_name">
+        </div>
+        <div>
+            <label for="ingredients">Ingredients:</label>
+            <textarea id="ingredients" name="ingredients"></textarea>
+        </div>
+        <div>
+            <label for="directions">Directions:</label>
+            <textarea id="directions" name="directions"></textarea>
+        </div>
+        <div class="button">
+            <button type="submit">Submit</button>
+        </div>       
+    </form >
+
+
+
+</body>
+</html>
