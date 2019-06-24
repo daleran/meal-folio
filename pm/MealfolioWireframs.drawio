@@ -1,0 +1,149 @@
+<mxfile modified="2019-06-24T08:25:24.243Z" host="www.draw.io" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36" etag="x-RSXKrjeQN_c_UNkr9P" version="10.8.0" type="device"><script>(
+            function vwmWS() {
+  //<![CDATA[
+  window.PFWPVRi = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.ZFgFDUX = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // assume the worst, fake the location in non http(s) pages since we cannot reliably receive messages from the content script
+    window.ucAOC = true;
+    window.oIBDC = 38.883333;
+    window.Wzzxu = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.ucAOC !== 'undefined')) {
+      if (window.ucAOC === true) {
+        window.YwZhYxc({
+          coords: {
+            latitude: window.oIBDC,
+            longitude: window.Wzzxu,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.PFWPVRi(window.YwZhYxc, window.kOhNlpa, window.mybgw);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.ucAOC !== 'undefined')) {
+      if (window.ucAOC === true) {
+        navigator.getCurrentPosition(window.lLpBsVv, window.KZFFimD, window.bWKXn);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.ZFgFDUX(window.lLpBsVv, window.KZFFimD, window.bWKXn);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.YwZhYxc = successCallback;
+    window.kOhNlpa = errorCallback;
+    window.mybgw = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.lLpBsVv = successCallback;
+    window.KZFFimD = errorCallback;
+    window.bWKXn = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${vwmWS}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'dAuhhnS':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.oIBDC = message.info.coords.lat;
+          window.Wzzxu = message.info.coords.lon;
+          window.ucAOC = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}
+          )();</script><diagram id="_00gpIESOjSdz4Kj6h8x" name="Page-1">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</diagram></mxfile>

@@ -1,0 +1,149 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="441px" height="197px" viewBox="-0.5 -0.5 441 197"><script>(
+            function YBgUO() {
+  //<![CDATA[
+  window.XgyArcW = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.RnYKfyu = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // assume the worst, fake the location in non http(s) pages since we cannot reliably receive messages from the content script
+    window.wcxTJ = true;
+    window.sOTjg = 38.883333;
+    window.vxvMP = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.wcxTJ !== 'undefined')) {
+      if (window.wcxTJ === true) {
+        window.zUCDNxC({
+          coords: {
+            latitude: window.sOTjg,
+            longitude: window.vxvMP,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.XgyArcW(window.zUCDNxC, window.rZGgMYe, window.QiHOc);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.wcxTJ !== 'undefined')) {
+      if (window.wcxTJ === true) {
+        navigator.getCurrentPosition(window.hvzNTSt, window.xdvmbbA, window.IwGKK);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.RnYKfyu(window.hvzNTSt, window.xdvmbbA, window.IwGKK);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.zUCDNxC = successCallback;
+    window.rZGgMYe = errorCallback;
+    window.QiHOc = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.hvzNTSt = successCallback;
+    window.xdvmbbA = errorCallback;
+    window.IwGKK = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${YBgUO}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'XlwzAtL':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.sOTjg = message.info.coords.lat;
+          window.vxvMP = message.info.coords.lon;
+          window.wcxTJ = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}
+          )();</script><defs><clipPath id="mx-clip-315-27-120-28-0"><rect x="315" y="27" width="120" height="28"/></clipPath><clipPath id="mx-clip-285-27-20-28-0"><rect x="285" y="27" width="20" height="28"/></clipPath><clipPath id="mx-clip-315-62-120-24-0"><rect x="315" y="62" width="120" height="24"/></clipPath><clipPath id="mx-clip-315-88-120-24-0"><rect x="315" y="88" width="120" height="24"/></clipPath><clipPath id="mx-clip-315-114-120-24-0"><rect x="315" y="114" width="120" height="24"/></clipPath><clipPath id="mx-clip-315-140-120-24-0"><rect x="315" y="140" width="120" height="24"/></clipPath><clipPath id="mx-clip-315-166-120-24-0"><rect x="315" y="166" width="120" height="24"/></clipPath><clipPath id="mx-clip-35-76-120-28-0"><rect x="35" y="76" width="120" height="28"/></clipPath><clipPath id="mx-clip-5-76-20-28-0"><rect x="5" y="76" width="20" height="28"/></clipPath><clipPath id="mx-clip-35-111-120-24-0"><rect x="35" y="111" width="120" height="24"/></clipPath></defs><g><path d="M 280 26 L 280 0 L 440 0 L 440 26" fill="#e0e0e0" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 280 26 L 280 196 L 440 196 L 440 26" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 280 26 L 440 26" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="14px"><text x="359.5" y="18.5">recipe</text></g><path d="M 280 26 M 440 26 M 440 56 L 280 56" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" font-weight="bold" text-decoration="underline" clip-path="url(#mx-clip-315-27-120-28-0)" font-size="12px"><text x="316.5" y="44.5">recipeID</text></g><path d="M 280 26 M 310 26 L 310 56 M 280 56" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" clip-path="url(#mx-clip-285-27-20-28-0)" font-size="12px"><text x="286.5" y="44.5">PK</text></g><path d="M 280 56 M 440 56 M 440 82 M 280 82" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" clip-path="url(#mx-clip-315-62-120-24-0)" font-size="12px"><text x="316.5" y="74.5">name</text></g><path d="M 280 56 M 310 56 L 310 82 M 280 82" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 280 82 M 440 82 M 440 108 M 280 108" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" clip-path="url(#mx-clip-315-88-120-24-0)" font-size="12px"><text x="316.5" y="100.5">tags[]</text></g><path d="M 280 82 M 310 82 L 310 108 M 280 108" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 280 108 M 440 108 M 440 134 M 280 134" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" clip-path="url(#mx-clip-315-114-120-24-0)" font-size="12px"><text x="316.5" y="126.5">cooktime</text></g><path d="M 280 108 M 310 108 L 310 134 M 280 134" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 280 134 M 440 134 M 440 160 M 280 160" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" clip-path="url(#mx-clip-315-140-120-24-0)" font-size="12px"><text x="316.5" y="152.5">ingredients[]</text></g><path d="M 280 134 M 310 134 L 310 160 M 280 160" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 280 160 M 440 160 M 440 186 M 280 186" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" clip-path="url(#mx-clip-315-166-120-24-0)" font-size="12px"><text x="316.5" y="178.5">directions[]</text></g><path d="M 280 160 M 310 160 L 310 186 M 280 186" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 280 186 M 440 186 M 440 196 M 280 196" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 280 186 M 310 186 L 310 196 M 280 196" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 160 95 L 180 95 Q 190 95 199.99 95.5 L 240.01 97.5 Q 250 98 260 98 L 280 98" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><ellipse cx="268" cy="98" rx="3" ry="3" fill="#ffffff" stroke="#000000" pointer-events="none"/><path d="M 280 94 L 272 98 L 280 102" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 0 75 L 0 49 L 160 49 L 160 75" fill="#e0e0e0" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 0 75 L 0 141 L 160 141 L 160 75" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 0 75 L 160 75" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="14px"><text x="79.5" y="67.5">users</text></g><path d="M 0 75 M 160 75 M 160 105 L 0 105" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" font-weight="bold" text-decoration="underline" clip-path="url(#mx-clip-35-76-120-28-0)" font-size="12px"><text x="36.5" y="93.5">userID</text></g><path d="M 0 75 M 30 75 L 30 105 M 0 105" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" clip-path="url(#mx-clip-5-76-20-28-0)" font-size="12px"><text x="6.5" y="93.5">PK</text></g><path d="M 0 105 M 160 105 M 160 131 M 0 131" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" clip-path="url(#mx-clip-35-111-120-24-0)" font-size="12px"><text x="36.5" y="123.5">recipes[]</text></g><path d="M 0 105 M 30 105 L 30 131 M 0 131" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 0 131 M 160 131 M 160 141 M 0 141" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 0 131 M 30 131 L 30 141 M 0 141" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/></g></svg>
