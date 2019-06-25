@@ -4,12 +4,6 @@ var db = require('./db');
 var api = express();
 
 
-var recModel = require('./recipes/models/recipeModel.js');
-var recipe = new recModel({name: 'test'});
-recipe.save(function (err) {
-    if (err) return console.error(err);
-  });
-
 api.get('/',(req,res)=>  res.send("API root page"));
 api.use('/recipes',require('./recipes/routes'));
 api.all('*', (req,res)=> res.status(404).send('404 Not Found'));
