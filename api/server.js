@@ -1,8 +1,8 @@
 require('dotenv').config();
 var express = require('express');
+var bodyParser = require('body-parser');
 var db = require('./db');
 var api = express();
-
 
 api.get('/',(req,res)=>  res.send("API root page"));
 api.use('/recipes',require('./recipes/routes'));
