@@ -1,14 +1,12 @@
 require('dotenv').config();
-
 var express = require('express');
-var app = express();
+var db = require('./db');
+var api = express();
 
 
-app.get('/',(req,res)=>  res.send("API root page"));
 
-app.use('/recipes',require('./recipes/routes'));
+api.get('/',(req,res)=>  res.send("API root page"));
+api.use('/recipes',require('./recipes/routes'));
+api.all('*', (req,res)=> res.status(404).send('404 Not Found'));
 
-app.all('*', (req,res)=> res.status(404).send('404 Not Found'));
-
-
-app.listen(process.env.PORT, ()=> console.log("Serving meal-folio API on port: "+process.env.PORT));
+api.listen(process.env.PORT, ()=> console.log("Serving meal-folio API on port: "+process.env.PORT));
