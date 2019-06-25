@@ -1,0 +1,22 @@
+{
+  "name": "meal-folio-api",
+  "version": "0.1.0",
+  "description": "An API for a personal recipe repository.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daleran/meal-folio.git"
+  },
+  "author": "Sean Davis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daleran/meal-folio/issues"
+  },
+  "homepage": "https://github.com/daleran/meal-folio#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
