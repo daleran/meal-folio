@@ -1,13 +1,20 @@
 var recipesEndpoint = require('express').Router();
-var recipes = require('./recipe.model');
+var Recipe = require('./recipe.model');
 
 recipesEndpoint.get('/', function(req,res){
     res.status(200).send('Get All Recipes');
 });
 
-recipesEndpoint.post('/', function(req,res){
+recipesEndpoint.post('/', async (req,res) => {
+    const recipe = new Recipe(req.body);
+
+    try {
+        await recipe.save();
+        res.status(201).send(recipe);
+    } catch (e){
+        res.status(400).send(e);
+    }
     
-    res.status(201).send('Post a new recipe');
 });
 
 recipesEndpoint.get('/:id', function(req,res){

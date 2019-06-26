@@ -13,6 +13,8 @@ module.exports = (function(){
             trim: true
         }],
         steps: [String]
+    }, {
+        timestamps: true
     });
 
     const model = mongoose.model("Recipe",recipeSchema);
