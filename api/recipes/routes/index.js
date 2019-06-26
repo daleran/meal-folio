@@ -1,12 +1,14 @@
 var recipesEndpoint = require('express').Router();
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
+var recipes = require('../models/recipeModel');
 
 recipesEndpoint.get('/', function(req,res){
     res.status(200).send('Get All Recipes');
 });
 
 recipesEndpoint.post('/', jsonParser, function(req,res){
+    
     res.status(201).send('Post a new recipe');
 });
 
