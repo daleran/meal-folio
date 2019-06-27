@@ -7,13 +7,10 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "nodemon",
-            "runtimeExecutable": "nodemon",
+            "name": "Launch Program",
             "program": "${workspaceFolder}\\src\\server.js",
-            "restart": true,
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "envFile": "${workspaceFolder}\\.env"
+            "envFile": "${workspaceFolder}/dev.env"
         }
+
     ]
 }
