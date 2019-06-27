@@ -1,10 +1,11 @@
 {
   "name": "meal-folio-api",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "An API for a personal recipe repository.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
