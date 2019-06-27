@@ -6,7 +6,7 @@
   "scripts": {
     "start": "./node_modules/.bin/env-cmd -f ./dev.env node src/server.js",
     "dev": "./node_modules/.bin/env-cmd -f ./dev.env nodemon src/server.js",
-    "test": "./node_modules/.bin/env-cmd -f ./test.env node src/server.js"
+    "test": "./node_modules/.bin/env-cmd -f ./test.env mocha src/server.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,9 @@
     "mongoose": "^5.6.1"
   },
   "devDependencies": {
-    "eslint": "^6.0.1"
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^6.0.1",
+    "mocha": "^6.1.4"
   }
 }
