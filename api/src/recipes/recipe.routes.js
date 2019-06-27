@@ -31,7 +31,7 @@ recipesEndpoint.get('/:id', async (req,res) =>{
         const recipe = await Recipe.findOne({ _id: id});
 
         if(!recipe){
-            return res.status(404).send();
+            return res.status(404).send({error: 'Recipe not found'});
         }
 
         res.send(recipe);
@@ -40,12 +40,32 @@ recipesEndpoint.get('/:id', async (req,res) =>{
     }
 });
 
-recipesEndpoint.put('/:id', async (req,res) =>{
-    res.status(200).send('Update a recipe with the id '+req.params.id);
+recipesEndpoint.patch('/:id', async (req,res) =>{
+    const update =req.body;
+    const id = req.params.id;
+
+    try {
+        const recipe = await Recipe.findOneAndUpdate({_id: id},update,{ runValidators: true });
+        res.send(recipe);
+    } catch (e) {
+        res.status(400).send(e);
+    }
 });
 
 recipesEndpoint.delete('/:id', async (req,res) =>{
-    res.status(204).send('Delete a recipe with the id '+req.params.id);
+    const id = req.params.id;
+
+    try{
+        const recipe = await Recipe.findOneAndDelete({_id: id});
+
+        if (!recipe){
+            return res.status(404).send();
+        }
+
+        res.send(recipe);
+    } catch(e){
+        res.status(500).send();
+    }
 });
 
 module.exports = recipesEndpoint;

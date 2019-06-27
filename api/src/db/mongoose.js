@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.DB_URL, {useNewUrlParser: true});
+mongoose.connect(process.env.DB_URL, {useNewUrlParser: true, useFindAndModify: false});
 
 const connection = mongoose.connection;
 connection.on('error',console.error.bind('console', 'DB Connection Error:'));
