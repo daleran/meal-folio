@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DB_URL, {useNewUrlParser: true});
 
-var connection = mongoose.connection;
+const connection = mongoose.connection;
 connection.on('error',console.error.bind('console', 'DB Connection Error:'));
 connection.on('open', ()=> console.log('Connected to Mongoose on '+process.env.DB_URL));
 connection.on('disconnected', ()=> console.log('Mongoose disconnected from '+process.env.DB_URL));
