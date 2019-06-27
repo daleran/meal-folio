@@ -2,14 +2,13 @@ const recipesEndpoint = require('express').Router();
 const Recipe = require('./recipe.model');
 
 recipesEndpoint.get('/', async (req,res) => {
-
+    
     try{
         const allRecipes = await Recipe.find();
         res.send(allRecipes);
     } catch(e){
         res.status(500).send();
     }
-
 });
 
 recipesEndpoint.post('/', async (req,res) => {
@@ -20,8 +19,7 @@ recipesEndpoint.post('/', async (req,res) => {
         res.status(201).send(recipe);
     } catch (e){
         res.status(400).send(e);
-    }
-    
+    }   
 });
 
 recipesEndpoint.get('/:id', async (req,res) =>{

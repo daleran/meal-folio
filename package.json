@@ -1,6 +1,6 @@
 {
   "name": "meal-folio-api",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "An API for a personal recipe repository.",
   "main": "server.js",
   "scripts": {
