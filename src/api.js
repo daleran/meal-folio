@@ -1,6 +1,6 @@
 const express = require('express')
 require('./db/mongoose')
-const recipeRouter = require('./recipes/recipe.routes')
+const recipeRouter = require('./recipes/routes.recipe')
 
 var api = express()
 

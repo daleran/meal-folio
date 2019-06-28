@@ -1,5 +1,5 @@
 const recipesEndpoint = require('express').Router()
-const Recipe = require('./recipe.model')
+const Recipe = require('./model.recipe')
 
 recipesEndpoint.get('/', async (req, res) => {
   try {
@@ -11,13 +11,11 @@ recipesEndpoint.get('/', async (req, res) => {
 })
 
 recipesEndpoint.post('/', async (req, res) => {
-  const recipe = new Recipe(req.body)
-
   try {
-    await recipe.save()
-    res.status(201).send(recipe)
-  } catch (e) {
-    res.status(400).send(e)
+    const response = await require('./action.addRecipe')(req.body)
+    res.status(201).send(response)
+  } catch (err) {
+    res.status(400).send(err)
   }
 })
 
@@ -25,7 +23,7 @@ recipesEndpoint.get('/:id', async (req, res) => {
   const id = req.params.id
 
   try {
-    const recipe = await Recipe.findOne({ _id: id })
+    const recipe = await require('./action.getRecipeByID')(id)
 
     if (!recipe) {
       return res.status(404).send({ error: 'Recipe not found' })
