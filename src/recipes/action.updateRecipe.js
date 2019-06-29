@@ -1,17 +1,16 @@
 const Recipe = require('./model.recipe')
 
 module.exports = async (req, res) => {
+  const updates = req.body
   const id = req.params.id
 
   try {
-    const recipe = await Recipe.findOne({ _id: id }).exec()
-
+    const recipe = await Recipe.findOneAndUpdate({ _id: id }, updates, { runValidators: true, new: true })
     if (!recipe) {
       return res.status(404).send({ error: 'Recipe not found' })
     }
-
-    res.send(recipe)
+    res.status(204).send(recipe)
   } catch (e) {
-    res.status(500).send(e)
+    res.status(400).send(e)
   }
 }
