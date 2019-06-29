@@ -9,6 +9,7 @@ async function setupServer () {
 
     api.listen(port, () => {
       console.log(`Serving meal-folio API on port: ${port}`)
+      api.emit('server_started')
     })
   } catch (err) {
     console.log('error', err)
