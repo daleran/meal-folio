@@ -7,11 +7,11 @@ module.exports = async (req, res) => {
     const recipe = await Recipe.findOneAndDelete({ _id: id })
 
     if (!recipe) {
-      return res.status(404).send()
+      return res.status(404).send({ error: 'Recipe not found' })
     }
 
     res.send(recipe)
-  } catch (e) {
-    res.status(500).send()
+  } catch (err) {
+    res.status(500).send(err)
   }
 }

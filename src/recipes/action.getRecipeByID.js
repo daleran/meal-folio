@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
     }
 
     res.send(recipe)
-  } catch (e) {
-    res.status(500).send(e)
+  } catch (err) {
+    res.status(500).send(err)
   }
 }
