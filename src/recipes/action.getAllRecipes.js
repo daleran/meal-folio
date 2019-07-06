@@ -1,4 +1,4 @@
-const Recipe = require('./model.recipe')
+const Recipe = require('./model.recipes')
 
 module.exports = async (req, res) => {
   try {

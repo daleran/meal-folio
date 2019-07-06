@@ -17,8 +17,9 @@ async function setupServer () {
 }
 
 function setUpRoutes () {
-  const recipeRouter = require('./recipes/routes.recipe')
+  const recipeRouter = require('./recipes/routes.recipes')
   api.use(express.json())
+  
   api.use(express.static('public'))
   api.get('/', (req, res) => res.sendFile('/public/index.html'))
   api.use('/recipes', recipeRouter)
