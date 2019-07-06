@@ -57,3 +57,9 @@ module.exports.missingStepsRecipe = (name) => {
     ]
   }
 }
+
+module.exports.patchName = (newName) => {
+  return {
+    name: `${newName}`
+  }
+}

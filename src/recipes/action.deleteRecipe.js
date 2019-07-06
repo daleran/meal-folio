@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
       return res.status(404).send({ error: 'Recipe not found' })
     }
 
-    res.send(recipe)
+    res.status(200).send(recipe)
   } catch (err) {
     res.status(500).send(err)
   }
