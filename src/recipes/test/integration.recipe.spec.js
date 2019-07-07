@@ -45,7 +45,7 @@ describe('Recipe Integration Tests', function () {
       })
   })
 
-  it('should GET all recipe objects', function (done) {
+  it('should GET the posted recipe in an array of all recipes', function (done) {
     chai.request(server)
       .get('/recipes')
       .end((err, res) => {
@@ -58,7 +58,7 @@ describe('Recipe Integration Tests', function () {
       })
   })
 
-  it('should GET a recipe with an id', function (done) {
+  it('should GET the posted recipe by id', function (done) {
     chai.request(server)
       .get('/recipes/' + testedRecipeID)
       .end((err, res) => {
@@ -70,7 +70,7 @@ describe('Recipe Integration Tests', function () {
       })
   })
 
-  it('should PATCH a recipe with an id', function (done) {
+  it('should PATCH the posted recipe with an id and an update object', function (done) {
     chai.request(server)
       .patch('/recipes/' + testedRecipeID)
       .type('json')
@@ -85,7 +85,7 @@ describe('Recipe Integration Tests', function () {
       })
   })
 
-  it('should DELETE a recipe with an id', function (done) {
+  it('should DELETE the posted recipe by id', function (done) {
     chai.request(server)
       .delete('/recipes/' + testedRecipeID)
       .end((err, res) => {
