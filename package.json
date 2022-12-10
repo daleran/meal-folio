@@ -20,7 +20,7 @@
   "homepage": "https://github.com/daleran/meal-folio#readme",
   "dependencies": {
     "env-cmd": "^9.0.3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mongodb": "^3.2.7",
     "mongoose": "^5.6.3"
   },
